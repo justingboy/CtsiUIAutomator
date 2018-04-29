@@ -37,9 +37,15 @@ public class WaiqinUIAutomatorTest {
     public void openRecentApps() throws RemoteException {
         mUiDevice.pressRecentApps();
     }
+
+       @After
+    public void restore() {
+      mUiDevice.pressHome();
+    }
 }
 ```
 3. 导出查看测试报告；
+4. 单个测试用例执行与整个测试用例的执行是差不多的，只是整个用例在执行的时候是无序的，则需要保证一个用例执行完成之后，恢复到下一个用例执行的条件；@After注解的方法中恢复；
 
 
 ## 四、通过API来写测试用例
