@@ -79,3 +79,36 @@ public class WaiqinUIAutomatorTest {
 
 * [使用uiautomator做UI测试](http://blog.chengyunfeng.com/?p=504)
 * [uiautomator2 使用Python测试 Android应用](https://www.cnblogs.com/fnng/p/8486863.html)
+
+
+## 六、额外功能
+
+**1. 添加了CUP架构类型判断库：**
+```
+ private String isWhichCpu() {
+        StringBuffer stringBuffer = new StringBuffer();
+        stringBuffer.append("手机CPU型号：\n");
+        stringBuffer.append("isArmCpu：" + CPUFrameworkHelper.isArmCpu() + "\n");
+        stringBuffer.append("isArm7Compatible：" + CPUFrameworkHelper.isArm7Compatible() + "\n");
+        stringBuffer.append("isMipsCpu：" + CPUFrameworkHelper.isMipsCpu() + "\n");
+        stringBuffer.append("isX86Cpu：" + CPUFrameworkHelper.isX86Cpu() + "\n");
+        stringBuffer.append("isArm64Cpu：" + CPUFrameworkHelper.isArm64Cpu() + "\n");
+        stringBuffer.append("isMips64Cpu：" + CPUFrameworkHelper.isMips64Cpu() + "\n");
+        stringBuffer.append("isX86_64Cpu：" + CPUFrameworkHelper.isX86_64Cpu() + "\n");
+        return stringBuffer.toString();
+    }
+```
+
+**2. 添加AutoEx库，让项目在崩溃时从异常堆栈中，自动寻找Stack Overflow的回答：**[参考文章](https://juejin.im/repo/5ae919db51882536711435ea?utm_source=gold_browser_extension)
+```
+1. 默认方法：
+ AutoEx.apply(this);
+2. 配置方法：
+ /**
+     * @param mApp    Applicatin
+     * @param maxSize 最大提示答案数目
+     * @param tag     自定义日志 默认 AutoEx
+     * @param isDebug 是否开启调试 true为开启 false为关闭 默认开启
+*/
+public static void apply(Context mApp, int maxSize, String tag, boolean isDebug)
+```
