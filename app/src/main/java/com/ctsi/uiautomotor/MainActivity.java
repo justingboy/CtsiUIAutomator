@@ -2,7 +2,7 @@ package com.ctsi.uiautomotor;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.widget.Toast;
+import android.widget.TextView;
 
 import com.kejiee.huaxindou.ndk.CPUFrameworkHelper;
 
@@ -12,7 +12,9 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Toast.makeText(this, isWhichCpu(), Toast.LENGTH_LONG).show();
+        TextView tv = findViewById(R.id.tv);
+        tv.setText(isWhichCpu());
+//        showAutoExToStackOverflow();
     }
 
     private String isWhichCpu() {
@@ -29,4 +31,10 @@ public class MainActivity extends AppCompatActivity {
 
         return stringBuffer.toString();
     }
+
+
+    private void showAutoExToStackOverflow() {
+        int i = 1 / 0;
+    }
+
 }
