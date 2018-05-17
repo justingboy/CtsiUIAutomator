@@ -1,7 +1,12 @@
 package com.ctsi.uiautomotor;
 
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.RecyclerView;
+import android.util.Log;
+import android.view.View;
+import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.kejiee.huaxindou.ndk.CPUFrameworkHelper;
@@ -14,8 +19,40 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         TextView tv = findViewById(R.id.tv);
         tv.setText(isWhichCpu());
+//      DaemonHelper.startService(this);(开启服务保活，能够使的Application不被重新构建，静态值不会丢失)
+        StaticClass.add("AAA");
+        Log.i("TAG_CTSI", "size = " + StaticClass.getList().size());
 //        showAutoExToStackOverflow();
+
     }
+
+    class MyViewHodler extends RecyclerView.ViewHolder {
+
+        public MyViewHodler(View itemView) {
+            super(itemView);
+        }
+    }
+
+    class MyAdapter extends RecyclerView.Adapter<MyViewHodler> {
+
+
+        @NonNull
+        @Override
+        public MyViewHodler onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+            return null;
+        }
+
+        @Override
+        public void onBindViewHolder(@NonNull MyViewHodler holder, int position) {
+
+        }
+
+        @Override
+        public int getItemCount() {
+            return 0;
+        }
+    }
+
 
     private String isWhichCpu() {
 
@@ -33,6 +70,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
+    //自动跳转到StackOverflow 在查找错误
     private void showAutoExToStackOverflow() {
         int i = 1 / 0;
     }
