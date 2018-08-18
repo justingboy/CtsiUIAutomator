@@ -4,6 +4,9 @@ import android.content.Context;
 import android.support.test.InstrumentationRegistry;
 import android.support.test.runner.AndroidJUnit4;
 
+import com.ctsi.uiautomotor.test.AnnotationParseUtils;
+import com.ctsi.uiautomotor.test.Person;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
@@ -22,5 +25,11 @@ public class ExampleInstrumentedTest {
         Context appContext = InstrumentationRegistry.getTargetContext();
 
         assertEquals("com.ctsi.uiautomotor", appContext.getPackageName());
+    }
+
+    @Test
+    public void test() {
+        Person person = new Person();
+        AnnotationParseUtils.parse(person.getClass());
     }
 }
