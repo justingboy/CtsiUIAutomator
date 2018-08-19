@@ -1,5 +1,6 @@
 package com.ctsi.uiautomotor.test;
 
+import android.app.Activity;
 import android.os.Bundle;
 import android.support.annotation.IntDef;
 import android.support.annotation.Nullable;
@@ -26,15 +27,37 @@ public class Activity_Test extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        @Mode
-        int currentDay = 2;
-        switch (currentDay) {
-            case Mode.GOBACK:
+//        @Mode
+//        int currentDay = 2;
+//        switch (currentDay) {
+//            case Mode.GOBACK:
+//                break;
+//            case Mode.GOPRE:
+//                break;
+//        }
+
+        play(Status.FAILED);
+
+    }
+
+    @Status
+    int age = 1;
+
+    private void play(@Status int code) {
+
+        @Status
+        int age = 1;
+        switch (age) {
+            case Status.FAILED:
                 break;
-            case Mode.GOPRE:
+            case Status.SUCCESS:
                 break;
         }
     }
 
-
+    @Override
+    public void onBackPressed() {
+        setResult(Activity.RESULT_OK);
+        finish();
+    }
 }

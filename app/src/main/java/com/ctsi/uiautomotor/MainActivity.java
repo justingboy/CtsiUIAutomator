@@ -1,5 +1,6 @@
 package com.ctsi.uiautomotor;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
@@ -11,6 +12,9 @@ import android.widget.TextView;
 
 import com.kejiee.huaxindou.ndk.CPUFrameworkHelper;
 
+import reverse.android.com.myannations.JPHelloWorld;
+
+@JPHelloWorld
 public class MainActivity extends AppCompatActivity {
 
     @Override
@@ -23,7 +27,6 @@ public class MainActivity extends AppCompatActivity {
         StaticClass.add("AAA");
         Log.i("TAG_CTSI", "size = " + StaticClass.getList().size());
 //        showAutoExToStackOverflow();
-
     }
 
     class MyViewHodler extends RecyclerView.ViewHolder {
@@ -75,4 +78,10 @@ public class MainActivity extends AppCompatActivity {
         int i = 1 / 0;
     }
 
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        Log.i("TAG_CTSI", "resultCode = " + requestCode);
+    }
 }

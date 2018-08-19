@@ -10,4 +10,8 @@ import java.lang.annotation.Target;
 @Target(ElementType.FIELD)
 public @interface Name {
     String value() default "";
+
+    int SUCCESS = 1;
+    int FAILED = 2;
+
 }

@@ -25,6 +25,7 @@
                 <action android:name="com.ctsi.library.daemon.receiver"/>
             </intent-filter>
         </receiver>
+        <activity android:name=".test.Activity_Test"/>
     </application>
 
 </manifest>
