@@ -16,7 +16,7 @@ import com.ctsi.uiautomotor.R;
  * Created by wanglin on 2018/8/19.
  */
 
-public class TestFragment extends Fragment {
+public class TestFragment extends Fragment implements ActResultManager.Callback {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
@@ -28,13 +28,7 @@ public class TestFragment extends Fragment {
                 Intent intent = new Intent(getActivity(), Activity_Test.class);
 //                getActivity().startActivityForResult(intent, 100);//Activity
 //                startActivityForResult(intent,100);//Fragment
-                ActResultManager actResultRequest = ActResultManager.getInstance(getActivity());
-                actResultRequest.startForResult(intent, new ActResultManager.Callback() {
-                    @Override
-                    public void onActivityResult(int resultCode, Intent data) {
-                        Toast.makeText(getActivity(), "返回了", Toast.LENGTH_SHORT).show();
-                    }
-                });
+                Activity_Test.start(getActivity(), TestFragment.this);
             }
         });
         return view;
@@ -44,5 +38,10 @@ public class TestFragment extends Fragment {
     public void onDestroy() {
         ActResultManager.getInstance(getActivity()).clear();
         super.onDestroy();
+    }
+
+    @Override
+    public void onActivityResult(int resultCode, Intent data) {
+        Toast.makeText(getActivity(), "TestFragment ->返回了", Toast.LENGTH_SHORT).show();
     }
 }

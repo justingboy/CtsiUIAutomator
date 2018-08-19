@@ -9,6 +9,7 @@ import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.kejiee.huaxindou.ndk.CPUFrameworkHelper;
 
@@ -82,6 +83,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        Log.i("TAG_CTSI", "resultCode = " + requestCode);
+        Toast.makeText(this, "MainActivity ->返回了", Toast.LENGTH_SHORT).show();
+
     }
 }

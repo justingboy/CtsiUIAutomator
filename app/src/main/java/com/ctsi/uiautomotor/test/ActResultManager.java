@@ -17,14 +17,15 @@ public class ActResultManager {
     private static HashMap<Activity, ActResultManager> mHashMap = new HashMap<>();
 
     private ActResultManager(Activity activity) {
-        fragment = getEventDispatchFragment(activity);
+        if (activity != null && !activity.isDestroyed()) {
+            fragment = getEventDispatchFragment(activity);
+        }
     }
 
     public static ActResultManager getInstance(Activity activity) {
         if (mHashMap.containsKey(activity)) {
             return mHashMap.get(activity);
         }
-        mHashMap.clear();
         mActResultRequest = new ActResultManager(activity);
         mHashMap.put(activity, mActResultRequest);
         return mActResultRequest;
@@ -61,7 +62,9 @@ public class ActResultManager {
     }
 
     public void startForResult(Intent intent, Callback callback) {
-        fragment.startForResult(intent, callback);
+        if (fragment != null) {
+            fragment.startForResult(intent, callback);
+        }
     }
 
     public interface Callback {
